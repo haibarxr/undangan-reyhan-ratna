@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff8f0;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #ffb347, #ffcc33);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+    .section {
+      padding: 2rem 1.5rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 150px;
+      border-radius: 10px;
+    }
+    .map {
+      text-align: center;
+    }
+    iframe {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: auto;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      background: #ffb347;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Undangan Pernikahan</h1>
+    <p><strong>Reyhan & Ratna</strong></p>
+    <div id="countdown" class="countdown"></div>
+  </header>
+
+  <section class="section">
+    <h2>Galeri Kenangan</h2>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/150" alt="foto1">
+      <img src="https://via.placeholder.com/150" alt="foto2">
+      <img src="https://via.placeholder.com/150" alt="foto3">
+    </div>
+  </section>
+
+  <section class="section map">
+    <h2>Lokasi Acara</h2>
+    <p>Gedung Kencana, Jakarta</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!..." loading="lazy"></iframe>
+  </section>
+
+  <section class="section">
+    <h2>Konfirmasi Kehadiran (RSVP)</h2>
+    <form onsubmit="event.preventDefault(); alert('Terima kasih sudah konfirmasi!')">
+      <input type="text" placeholder="Nama Lengkap" required />
+      <input type="number" placeholder="Jumlah Tamu" required />
+      <textarea placeholder="Ucapan atau Doa"></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+  </section>
+
+  <section class="section">
+    <h2>Ikuti Kami</h2>
+    <p>
+      <a href="https://instagram.com/namapengantin" target="_blank">Instagram</a> |
+      <a href="https://wa.me/6281234567890" target="_blank">WhatsApp</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Rina & Dimas. Dibuat dengan ❤️ oleh keluarga.
+  </footer>
+
+  <script>
+    // Countdown timer
+    const countdownElement = document.getElementById("countdown");
+    const weddingDate = new Date("2025-08-01T10:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) {
+        countdownElement.innerHTML = "Acara sedang berlangsung!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML =
+        `${days} hari ${hours} jam ${minutes} menit ${seconds} detik`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
